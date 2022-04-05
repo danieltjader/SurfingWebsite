@@ -1,3 +1,6 @@
+/* Author: datj9003  */
+
+/* Creating variables for common styles */
 :root{
 
   --dark-color: rgb(33, 32, 41);
@@ -9,24 +12,26 @@
   --secondary-color: rgb(59, 199, 255);
   --third-color: rgb(251, 252, 174);
 
-  --fontfamily-main: 'Poppins', sans-serif;
-  --fontfamily-title:'Gochi Hand', cursive;
+  --fontfamily-main: 'Poppins', 'Verdana', 'Arial', sans-serif;
+  --fontfamily-title:'Gochi Hand', 'Segoe script', 'Rage', cursive;
 
-  --fontsize-p-small: 12px;
-  --fontsize-p-medium: 14px;
-  --fontsize-p-large: 22px;
+  --fontsize-p-small: .8rem;
+  --fontsize-p-medium: 1rem;
+  --fontsize-p-large: 1.5rem;
 
-  --fontsize-title-large: 72px;
-  --fontsize-title-medium: 48px;
-  --fontsize-title-small: 24px;
+  --fontsize-title-large: 5rem;
+  --fontsize-title-medium: 3rem;
+  --fontsize-title-small: 2rem;
 
   --padding-medium: 20px;
   --padding-large: 30px;
 
   --borderradius-standard: 20px;
-
+  --boxshadow-standard: rgba(0, 0, 0, 0.15) 0px 20px 25px -5px, rgba(0, 0, 0, 0.08) 0px 10px 10px -5px;
 }
 
+
+/* Design for HTML5 elements */ 
 * {
   box-sizing: border-box;
 }
@@ -44,7 +49,7 @@ h1, h2, h3 {
 
 h1{
   color: var(--secondary-color);
-  font-size: var(--fontsize-title-large);
+  font-size: var(--fontsize-title-medium);
 }
 
 h2 {
@@ -56,28 +61,24 @@ h3 {
 }
 
 body {
- 
   height: 100%;
-  background-image: url("../img/surfing.jpg");
-  background-color: var(--dark-color);
-  background-position: center; 
-  background-repeat: no-repeat; 
+  background: var(--dark-color) url("../img/surfing.jpg") no-repeat center;
   background-size:cover;
   color: var(--dark-grey);
 }
 
 header {
   opacity: 0.8;
-  background-color: var(--dark-color);
   text-align: center;
   padding: var(--padding-medium);
   border-bottom: solid 1px var(--dark-grey);
+  background-color: var(--dark-color);
 }
 
 header p {
   color: var(--light-color);
+  font-size: var(--fontsize-p-medium);
   font-style: italic;
-  font-size: var(--fontsize-p-large);
 }
 
 nav {
@@ -122,63 +123,71 @@ a:hover {
   color: var(--primary-color);
 }
 
-/* Flex container */ 
+main > section, aside {
+  margin: 3rem auto;
+  border-radius: var(--borderradius-standard);
+}
+
+/* Set the content-width to 70% */ 
+main, aside {
+  margin: 0 auto;
+  width: 70%;
+}
+
+/* Use flex container for the main-content */ 
 #container {
   display: flex;
   flex-direction: column;
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-main > section, aside {
-  width: 80%;
-  max-width: 1000px;
-  margin: 3rem auto;
-  border-radius: var(--borderradius-standard);
-}
-/* Products */
+/* Product section, design */
  #products {
-  
+
+   width: 100%;
    display: grid;
    grid-template-rows: repeat(4, 1fr);
-   grid-template-columns: 100%;
-   row-gap: 3rem;
-   column-gap: 2em;
+   grid-template-columns: repeat(1, 1fr);
+   row-gap: 5rem;
+   column-gap: 2rem;
  }
 
  #products article {
-  
+   margin: 0 auto;
+   width: 100%;
+   min-width: 250px;
+   max-width: 600px;
    text-align: center;
    background-color: var(--cards-color);
    border-radius: var(--borderradius-standard);
    padding: var(--padding-large);
+   box-shadow: var(--boxshadow-standard);
+ }
+
+ #products article:hover{
+    transform: translateY(-10px);
+    transition: ease-in-out 0.3s;
  }
  
-
- #products h3.date{
-
+ #products h3{
+  margin: 1rem auto;
   font-size: var(--fontsize-p-large);
   font-family: var(--fontfamily-main);
 }
 
 #products article img{
   height: 100%;
-  width: 100%;
-  min-height: 150px;
+  max-width: 100%;
   max-height: 350px;
   margin: 1rem auto;
 }
 
 #products article p{
-  margin: 2rem;
+  height: 100%;;
+  margin: 1rem auto;
 }
 
-/* Classes table */ 
 
+/* Classes section, design*/ 
 #classes h2{
   font-size: var(--fontsize-title-large);
   color: var(--light-color);
@@ -188,13 +197,13 @@ main > section, aside {
 table {
   border-radius: 10px;
   cursor: pointer;
-  margin: 0 auto;
   width: 100%;
+  margin: 0 auto;
   font-size: var(--fontsize-p-large);
   font-family: var(--fontfamily-main);
   background-color: var(--light-color);
   border-collapse: collapse;
-  
+  box-shadow: var(--boxshadow-standard);
 }
 
 table th, tr, td {
@@ -208,7 +217,6 @@ th {
   font-weight: bold;
   background-color: var(--dark-color);
   color: var(--light-color);
-  padding: 1rem;
 }
 
 th:first-of-type{
@@ -228,11 +236,12 @@ tr:hover {
 }
 
 
-/* Story */ 
+/* Story section, design */ 
 #story {
   text-align: center;
   background-color: var(--cards-color);
   padding: var(--padding-large);
+  box-shadow: var(--boxshadow-standard);
 }
 
 #story h2, h3{
@@ -252,22 +261,34 @@ tr:hover {
 }
 
 #story p {
+  font-size: var(--fontsize-p-medium);
   margin: 1rem 2rem;
 }
 
 
-/* Newsletter */ 
+/* Newsletter section, design */ 
 aside {
-
+  margin: 3rem auto 0 auto;
+  width: 80%;
   font-size: var(--fontsize-p-medium);
   font-family: var(--fontfamily-main);
   padding: 75px;
   background-color: var(--cards-color);
-  height: 100%;
+  box-shadow: var(--boxshadow-standard);
 }
 
+
 aside h2 {
+  font-size: var(--fontsize-title-medium);
   margin-bottom: 0;
+}
+
+aside h3 {
+  font-size: var(--fontsize-title-small);
+}
+
+aside p {
+  font-size: var(--fontsize-p-large);
 }
 
 aside form {
@@ -284,7 +305,6 @@ form input{
   height: 40px;
   width: 100%;
 }
-
 
 form > ul > li > ul{
   display: flex;
@@ -304,7 +324,7 @@ form input[type="Submit"] {
   border-radius: var(--borderradius-standard);
   width: 50%;
   margin: 2rem auto;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  box-shadow: var(--boxshadow-standard);
 }
 
 form input[type="Submit"]:hover{
@@ -314,7 +334,7 @@ form input[type="Submit"]:hover{
 
 form input{
   border-width: 2px;
-  border-color: white;
+  border-color: var(--light-color);
   border-radius: 10px;
 }
 
@@ -323,39 +343,44 @@ form input:focus{
   border: 2px solid var(--secondary-color);
 }
 
+/* Setting the placeholder text alignment for input fields. Works with modern browsers */ 
+::-webkit-input-placeholder {
+  padding-left: 10px;
+  text-align: left;
+}
+:-moz-placeholder {
+  padding-left: 10px;
+  text-align: left;
+}
+
 /* Footer */
 footer {
   opacity: 0.8;
   background-color: var(--dark-color);
   text-align: center;
   color: var(--light-color);
-  padding: var(--padding-medium);
+  height: 100%;
+  padding: var(--padding-large);
   border-top: solid 1px var(--dark-grey);
+  margin-top: 3rem;
 }
 
 
-/* Media */ 
+/* Media query, for larger screens */ 
 @media only screen and (min-width: 1000px) {
 
-  :root{
 
-    --fontsize-p-large: 16px;
-  
-    --fontsize-title-large: 48px;
-    --fontsize-title-medium: 32px;
-    --fontsize-title-small: 18px;
-  
-    --padding-medium: 25px;
-    --padding-large: 30px;
-  
-    --borderradius-standard: 20px;
-  }
-  
-
-  main {
-    align-items: center;
+   /* The sections width can be increased to 80% of the screen width */ 
+  main, aside {
+    margin: 0 auto;
+    width: 80%;
   }
 
+  h1 {
+    font-size: var(--fontsize-title-large);
+  }
+
+  /* Tightening the links in the nav */ 
   nav ul {
     justify-content: center;
   }
@@ -364,43 +389,49 @@ footer {
     margin: 0 2rem;
   }
 
-  #classes, #story, #products, aside{
-    width: 70%;
-  }
-
-  #story {
-    margin-top: 5rem;
-  }
-
+  /* Change the gridlayout to 2 rows and cols */ 
   #products {
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 2rem;
-    column-gap: 2rem;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 1rem;
+    column-gap: 1rem;
   }
 
-  #products article {
-    max-width: 450px;
-  }
-
-  #products article p {
-    margin: 1rem;
+  #products article h2{
+    font-size: var(--fontsize-title-small);
   }
 
   #story h2,h3 {
     margin: 2rem auto;
+  }
+}
 
+
+/* Media query, for even larger screens */ 
+@media only screen and (min-width: 1600px) {
+
+  /* Adjust the width to create a better the layout */
+  main {
+    width: 90%;
   }
 
-  
+  aside {
+    width: 55%;
+  }
 
+  /* Change the grid to 4 columns */ 
+  #products {
+    width: 90%;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(4, 1fr);
+  }
 
-
-  
-
+  #classes, #story{
+    width: 60%;
+  }
+}
  
 
-  
-}
+
 
 
